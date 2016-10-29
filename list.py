@@ -49,45 +49,22 @@ class List:
             print("There are no elements in the list!")
             return self.first
         current = self.first
+        current = current.next
         if current.next == None:
-            print("Metode Revers unavelable!")
-            return self.first
-        last = current.next
-        tempLast = self.first
-        if last.next == None:
-            self.first = last
-            last.next = current
-            current.next = None
-            return self.first
-        while last.next:
-            last = last.next
-            tempLast = tempLast.next
-        last.next = current.next
-        tempLast.next = current
-        self.first = last
-        last = current
-        last.next = None
-        current = self.first.next
-        last = tempLast
-        tempLast = self.first
-        while tempLast.next != last:
-            tempLast =tempLast.next
-        currentLast = self.first
-        while currentLast.next != current:
-            currentLast = currentLast.next
-        while current != tempLast.next:
-            tempLast.next = current
-            currentLast.next = last
-            lastLast = last.next
-            last.next = current.next
-            current.next = lastLast
-            last = tempLast
-            tempLast = self.first
-            while tempLast.next != last:
-                tempLast = tempLast.next
-            currentLast = currentLast.next
-            current = currentLast.next
-
+            current.next = self.first
+            self.first.next = None
+            self.first = current
+        self.first.next = None
+        currentNext = current.next
+        while current != None:
+            firstCurrent = self.first
+            self.first = current
+            self.first.next = firstCurrent
+            current = currentNext
+            if currentNext == None:
+                return self.first
+            currentNext = currentNext.next
+            
     def printList(self):
         temp = self.first
         while temp != None:
