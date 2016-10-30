@@ -54,6 +54,7 @@ class List:
             current.next = self.first
             self.first.next = None
             self.first = current
+            return self.first
         self.first.next = None
         currentNext = current.next
         while current != None:
